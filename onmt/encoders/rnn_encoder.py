@@ -43,6 +43,7 @@ class RNNEncoder(EncoderBase):
 
         # Initialize the bridge layer
         self.use_bridge = use_bridge
+        #elf.no_pack_padded_seq = True
         if self.use_bridge:
             self._initialize_bridge(rnn_type,
                                     hidden_size,
@@ -63,21 +64,27 @@ class RNNEncoder(EncoderBase):
     def forward(self, src, lengths=None):
         """See :func:`EncoderBase.forward()`"""
         self._check_args(src, lengths)
-
+        "modified by zwk,resort src"
+        sorted_lengths,indices=lengths.sort(descending=True)
+        src=src.index_select(1,indices)
         emb = self.embeddings(src)
         # s_len, batch, emb_dim = emb.size()
 
         packed_emb = emb
         if lengths is not None and not self.no_pack_padded_seq:
             # Lengths data is wrapped inside a Tensor.
-            lengths_list = lengths.view(-1).tolist()
+            lengths_list = sorted_lengths.view(-1).tolist()
             packed_emb = pack(emb, lengths_list)
-
+        _,ori_indices=indices.sort()
         memory_bank, encoder_final = self.rnn(packed_emb)
 
         if lengths is not None and not self.no_pack_padded_seq:
             memory_bank = unpack(memory_bank)[0]
-
+        memory_bank=memory_bank.index_select(1,ori_indices)
+        h_n,c_n=encoder_final
+        h_n=h_n.index_select(1,ori_indices)
+        c_n=c_n.index_select(1,ori_indices)
+        encoder_final=tuple([h_n,c_n])
         if self.use_bridge:
             encoder_final = self._bridge(encoder_final)
         return encoder_final, memory_bank, lengths

@@ -58,7 +58,7 @@ def check_sru_requirement(abort=False):
         raise AssertionError("Using SRU requires pytorch built with cuda.")
 
     # Check 3.
-    pattern = re.compile(".*cuda/lib.*")
+    pattern = re.compile(".*x64.*")
     ld_path = os.getenv('LD_LIBRARY_PATH', "")
     if re.match(pattern, ld_path) is None:
         if not abort:

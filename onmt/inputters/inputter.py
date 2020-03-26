@@ -747,6 +747,7 @@ class DatasetLazyIter(object):
         cur_dataset = torch.load(path)
         logger.info('number of examples: %d' % len(cur_dataset))
         cur_dataset.fields = self.fields
+        "modified by zwk"
         cur_iter = OrderedIterator(
             dataset=cur_dataset,
             batch_size=self.batch_size,
@@ -756,7 +757,7 @@ class DatasetLazyIter(object):
             device=self.device,
             train=self.is_train,
             sort=False,
-            sort_within_batch=True,
+            sort_within_batch=False,
             repeat=False,
             yield_raw_example=self.yield_raw_example
         )
