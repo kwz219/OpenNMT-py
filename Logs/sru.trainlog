@@ -1,0 +1,643 @@
+[2020-03-26 13:10:32,881 INFO]  * src vocab size = 3558
+[2020-03-26 13:10:32,896 INFO]  * tgt vocab size = 6420
+[2020-03-26 13:10:32,896 INFO] Building model...
+[2020-03-26 13:10:37,145 INFO] NMTModel(
+  (encoder): RNNEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(3558, 400, padding_idx=1)
+        )
+      )
+    )
+    (rnn): SRU(
+      (rnn_lst): ModuleList(
+        (0): SRUCell()
+        (1): SRUCell()
+      )
+    )
+  )
+  (decoder): StdRNNDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(6420, 400, padding_idx=1)
+        )
+      )
+    )
+    (dropout): Dropout(p=0.3, inplace=False)
+    (rnn): SRU(
+      (rnn_lst): ModuleList(
+        (0): SRUCell()
+        (1): SRUCell()
+      )
+    )
+    (attn): GlobalAttention(
+      (linear_in): Linear(in_features=400, out_features=400, bias=False)
+      (linear_out): Linear(in_features=800, out_features=400, bias=False)
+    )
+  )
+  (generator): Sequential(
+    (0): Linear(in_features=400, out_features=6420, bias=True)
+    (1): Cast()
+    (2): LogSoftmax()
+  )
+)
+[2020-03-26 13:10:37,145 INFO] encoder: 2384800
+[2020-03-26 13:10:37,145 INFO] decoder: 6584020
+[2020-03-26 13:10:37,145 INFO] * number of parameters: 8968820
+[2020-03-26 13:10:37,161 INFO] Starting training on GPU: [0]
+[2020-03-26 13:10:37,161 INFO] Start training loop and validate every 200 steps...
+[2020-03-26 13:10:37,161 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:10:37,176 INFO] number of examples: 7998
+[2020-03-26 13:17:54,593 INFO]  * src vocab size = 3558
+[2020-03-26 13:17:54,593 INFO]  * tgt vocab size = 6420
+[2020-03-26 13:17:54,593 INFO] Building model...
+[2020-03-26 13:17:57,936 INFO] NMTModel(
+  (encoder): RNNEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(3558, 400, padding_idx=1)
+        )
+      )
+    )
+    (rnn): SRU(
+      (rnn_lst): ModuleList(
+        (0): SRUCell()
+        (1): SRUCell()
+      )
+    )
+  )
+  (decoder): StdRNNDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(6420, 400, padding_idx=1)
+        )
+      )
+    )
+    (dropout): Dropout(p=0.3, inplace=False)
+    (rnn): SRU(
+      (rnn_lst): ModuleList(
+        (0): SRUCell()
+        (1): SRUCell()
+      )
+    )
+    (attn): GlobalAttention(
+      (linear_in): Linear(in_features=400, out_features=400, bias=False)
+      (linear_out): Linear(in_features=800, out_features=400, bias=False)
+    )
+  )
+  (generator): Sequential(
+    (0): Linear(in_features=400, out_features=6420, bias=True)
+    (1): Cast()
+    (2): LogSoftmax()
+  )
+)
+[2020-03-26 13:17:57,936 INFO] encoder: 2384800
+[2020-03-26 13:17:57,936 INFO] decoder: 6584020
+[2020-03-26 13:17:57,936 INFO] * number of parameters: 8968820
+[2020-03-26 13:17:57,936 INFO] Starting training on GPU: [0]
+[2020-03-26 13:17:57,936 INFO] Start training loop and validate every 200 steps...
+[2020-03-26 13:17:57,936 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:17:57,968 INFO] number of examples: 7998
+[2020-03-26 13:18:39,629 INFO]  * src vocab size = 3558
+[2020-03-26 13:18:39,629 INFO]  * tgt vocab size = 6420
+[2020-03-26 13:18:39,629 INFO] Building model...
+[2020-03-26 13:18:43,035 INFO] NMTModel(
+  (encoder): RNNEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(3558, 400, padding_idx=1)
+        )
+      )
+    )
+    (rnn): SRU(
+      (rnn_lst): ModuleList(
+        (0): SRUCell()
+        (1): SRUCell()
+      )
+    )
+  )
+  (decoder): StdRNNDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(6420, 400, padding_idx=1)
+        )
+      )
+    )
+    (dropout): Dropout(p=0.3, inplace=False)
+    (rnn): SRU(
+      (rnn_lst): ModuleList(
+        (0): SRUCell()
+        (1): SRUCell()
+      )
+    )
+    (attn): GlobalAttention(
+      (linear_in): Linear(in_features=400, out_features=400, bias=False)
+      (linear_out): Linear(in_features=800, out_features=400, bias=False)
+    )
+  )
+  (generator): Sequential(
+    (0): Linear(in_features=400, out_features=6420, bias=True)
+    (1): Cast()
+    (2): LogSoftmax()
+  )
+)
+[2020-03-26 13:18:43,035 INFO] encoder: 2384800
+[2020-03-26 13:18:43,035 INFO] decoder: 6584020
+[2020-03-26 13:18:43,035 INFO] * number of parameters: 8968820
+[2020-03-26 13:18:43,035 INFO] Starting training on GPU: [0]
+[2020-03-26 13:18:43,035 INFO] Start training loop and validate every 200 steps...
+[2020-03-26 13:18:43,035 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:18:43,066 INFO] number of examples: 7998
+[2020-03-26 13:20:13,786 INFO]  * src vocab size = 3558
+[2020-03-26 13:20:13,786 INFO]  * tgt vocab size = 6420
+[2020-03-26 13:20:13,786 INFO] Building model...
+[2020-03-26 13:20:17,176 INFO] NMTModel(
+  (encoder): RNNEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(3558, 400, padding_idx=1)
+        )
+      )
+    )
+    (rnn): SRU(
+      (rnn_lst): ModuleList(
+        (0): SRUCell()
+        (1): SRUCell()
+      )
+    )
+  )
+  (decoder): StdRNNDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(6420, 400, padding_idx=1)
+        )
+      )
+    )
+    (dropout): Dropout(p=0.3, inplace=False)
+    (rnn): SRU(
+      (rnn_lst): ModuleList(
+        (0): SRUCell()
+        (1): SRUCell()
+      )
+    )
+    (attn): GlobalAttention(
+      (linear_in): Linear(in_features=400, out_features=400, bias=False)
+      (linear_out): Linear(in_features=800, out_features=400, bias=False)
+    )
+  )
+  (generator): Sequential(
+    (0): Linear(in_features=400, out_features=6420, bias=True)
+    (1): Cast()
+    (2): LogSoftmax()
+  )
+)
+[2020-03-26 13:20:17,176 INFO] encoder: 2384800
+[2020-03-26 13:20:17,176 INFO] decoder: 6584020
+[2020-03-26 13:20:17,176 INFO] * number of parameters: 8968820
+[2020-03-26 13:20:17,176 INFO] Starting training on GPU: [0]
+[2020-03-26 13:20:17,176 INFO] Start training loop and validate every 200 steps...
+[2020-03-26 13:20:17,176 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:20:17,207 INFO] number of examples: 7998
+[2020-03-26 13:31:51,590 INFO]  * src vocab size = 3558
+[2020-03-26 13:31:51,590 INFO]  * tgt vocab size = 6420
+[2020-03-26 13:31:51,590 INFO] Building model...
+[2020-03-26 13:31:54,964 INFO] NMTModel(
+  (encoder): RNNEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(3558, 400, padding_idx=1)
+        )
+      )
+    )
+    (rnn): SRU(
+      (rnn_lst): ModuleList(
+        (0): SRUCell()
+        (1): SRUCell()
+      )
+    )
+  )
+  (decoder): StdRNNDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(6420, 400, padding_idx=1)
+        )
+      )
+    )
+    (dropout): Dropout(p=0.3, inplace=False)
+    (rnn): SRU(
+      (rnn_lst): ModuleList(
+        (0): SRUCell()
+        (1): SRUCell()
+      )
+    )
+    (attn): GlobalAttention(
+      (linear_in): Linear(in_features=400, out_features=400, bias=False)
+      (linear_out): Linear(in_features=800, out_features=400, bias=False)
+    )
+  )
+  (generator): Sequential(
+    (0): Linear(in_features=400, out_features=6420, bias=True)
+    (1): Cast()
+    (2): LogSoftmax()
+  )
+)
+[2020-03-26 13:31:54,964 INFO] encoder: 2384800
+[2020-03-26 13:31:54,964 INFO] decoder: 6584020
+[2020-03-26 13:31:54,964 INFO] * number of parameters: 8968820
+[2020-03-26 13:31:54,964 INFO] Starting training on GPU: [0]
+[2020-03-26 13:31:54,964 INFO] Start training loop and validate every 200 steps...
+[2020-03-26 13:31:54,964 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:31:54,980 INFO] number of examples: 7998
+[2020-03-26 13:33:55,591 INFO]  * src vocab size = 3558
+[2020-03-26 13:33:55,591 INFO]  * tgt vocab size = 6420
+[2020-03-26 13:33:55,591 INFO] Building model...
+[2020-03-26 13:33:58,949 INFO] NMTModel(
+  (encoder): RNNEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(3558, 400, padding_idx=1)
+        )
+      )
+    )
+    (rnn): SRU(
+      (rnn_lst): ModuleList(
+        (0): SRUCell()
+        (1): SRUCell()
+      )
+    )
+  )
+  (decoder): StdRNNDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(6420, 400, padding_idx=1)
+        )
+      )
+    )
+    (dropout): Dropout(p=0.3, inplace=False)
+    (rnn): SRU(
+      (rnn_lst): ModuleList(
+        (0): SRUCell()
+        (1): SRUCell()
+      )
+    )
+    (attn): GlobalAttention(
+      (linear_in): Linear(in_features=400, out_features=400, bias=False)
+      (linear_out): Linear(in_features=800, out_features=400, bias=False)
+    )
+  )
+  (generator): Sequential(
+    (0): Linear(in_features=400, out_features=6420, bias=True)
+    (1): Cast()
+    (2): LogSoftmax()
+  )
+)
+[2020-03-26 13:33:58,965 INFO] encoder: 2384800
+[2020-03-26 13:33:58,965 INFO] decoder: 6584020
+[2020-03-26 13:33:58,965 INFO] * number of parameters: 8968820
+[2020-03-26 13:33:58,965 INFO] Starting training on GPU: [0]
+[2020-03-26 13:33:58,965 INFO] Start training loop and validate every 200 steps...
+[2020-03-26 13:33:58,965 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:33:58,981 INFO] number of examples: 7998
+[2020-03-26 13:37:31,280 INFO]  * src vocab size = 3558
+[2020-03-26 13:37:31,280 INFO]  * tgt vocab size = 6420
+[2020-03-26 13:37:31,280 INFO] Building model...
+[2020-03-26 13:37:34,654 INFO] NMTModel(
+  (encoder): RNNEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(3558, 400, padding_idx=1)
+        )
+      )
+    )
+    (rnn): SRU(
+      (rnn_lst): ModuleList(
+        (0): SRUCell()
+        (1): SRUCell()
+      )
+    )
+  )
+  (decoder): StdRNNDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(6420, 400, padding_idx=1)
+        )
+      )
+    )
+    (dropout): Dropout(p=0.3, inplace=False)
+    (rnn): SRU(
+      (rnn_lst): ModuleList(
+        (0): SRUCell()
+        (1): SRUCell()
+      )
+    )
+    (attn): GlobalAttention(
+      (linear_in): Linear(in_features=400, out_features=400, bias=False)
+      (linear_out): Linear(in_features=800, out_features=400, bias=False)
+    )
+  )
+  (generator): Sequential(
+    (0): Linear(in_features=400, out_features=6420, bias=True)
+    (1): Cast()
+    (2): LogSoftmax()
+  )
+)
+[2020-03-26 13:37:34,654 INFO] encoder: 2384800
+[2020-03-26 13:37:34,654 INFO] decoder: 6584020
+[2020-03-26 13:37:34,654 INFO] * number of parameters: 8968820
+[2020-03-26 13:37:34,654 INFO] Starting training on GPU: [0]
+[2020-03-26 13:37:34,654 INFO] Start training loop and validate every 200 steps...
+[2020-03-26 13:37:34,654 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:37:34,670 INFO] number of examples: 7998
+[2020-03-26 13:37:38,153 INFO] Step 50/ 5000; acc:  10.53; ppl: 1142.87; xent: 7.04; lr: 0.50000; 2347/10700 tok/s;      3 sec
+[2020-03-26 13:37:39,184 INFO] Step 100/ 5000; acc:  15.61; ppl: 384.41; xent: 5.95; lr: 0.50000; 7325/32673 tok/s;      5 sec
+[2020-03-26 13:37:39,692 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:37:39,707 INFO] number of examples: 7998
+[2020-03-26 13:37:40,379 INFO] Step 150/ 5000; acc:  17.15; ppl: 323.29; xent: 5.78; lr: 0.50000; 7302/29480 tok/s;      6 sec
+[2020-03-26 13:37:41,441 INFO] Step 200/ 5000; acc:  20.58; ppl: 219.92; xent: 5.39; lr: 0.50000; 7561/32421 tok/s;      7 sec
+[2020-03-26 13:37:41,441 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:37:41,441 INFO] number of examples: 1000
+[2020-03-26 13:37:41,722 INFO] Validation perplexity: 205.054
+[2020-03-26 13:37:41,722 INFO] Validation accuracy: 21.7233
+[2020-03-26 13:37:42,691 INFO] Step 250/ 5000; acc:  23.28; ppl: 178.66; xent: 5.19; lr: 0.50000; 6530/26122 tok/s;      8 sec
+[2020-03-26 13:37:42,691 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:37:42,753 INFO] number of examples: 7998
+[2020-03-26 13:37:43,909 INFO] Step 300/ 5000; acc:  21.94; ppl: 193.42; xent: 5.26; lr: 0.50000; 6739/30729 tok/s;      9 sec
+[2020-03-26 13:37:44,862 INFO] Step 350/ 5000; acc:  25.55; ppl: 133.14; xent: 4.89; lr: 0.50000; 7925/35351 tok/s;     10 sec
+[2020-03-26 13:37:45,331 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:37:45,393 INFO] number of examples: 7998
+[2020-03-26 13:37:46,050 INFO] Step 400/ 5000; acc:  24.49; ppl: 148.48; xent: 5.00; lr: 0.50000; 7348/29667 tok/s;     11 sec
+[2020-03-26 13:37:46,050 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:37:46,050 INFO] number of examples: 1000
+[2020-03-26 13:37:46,315 INFO] Validation perplexity: 142.636
+[2020-03-26 13:37:46,315 INFO] Validation accuracy: 25.5772
+[2020-03-26 13:37:47,284 INFO] Step 450/ 5000; acc:  26.88; ppl: 114.01; xent: 4.74; lr: 0.50000; 6508/27906 tok/s;     13 sec
+[2020-03-26 13:37:48,237 INFO] Step 500/ 5000; acc:  28.43; ppl: 99.39; xent: 4.60; lr: 0.50000; 8564/34258 tok/s;     14 sec
+[2020-03-26 13:37:48,237 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:37:48,315 INFO] number of examples: 7998
+[2020-03-26 13:37:49,471 INFO] Step 550/ 5000; acc:  26.08; ppl: 116.25; xent: 4.76; lr: 0.50000; 6653/30340 tok/s;     15 sec
+[2020-03-26 13:37:50,439 INFO] Step 600/ 5000; acc:  30.05; ppl: 82.54; xent: 4.41; lr: 0.50000; 7797/34781 tok/s;     16 sec
+[2020-03-26 13:37:50,439 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:37:50,455 INFO] number of examples: 1000
+[2020-03-26 13:37:50,705 INFO] Validation perplexity: 112.879
+[2020-03-26 13:37:50,705 INFO] Validation accuracy: 27.8495
+[2020-03-26 13:37:51,189 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:37:51,220 INFO] number of examples: 7998
+[2020-03-26 13:37:51,876 INFO] Step 650/ 5000; acc:  28.32; ppl: 93.71; xent: 4.54; lr: 0.50000; 6070/24507 tok/s;     17 sec
+[2020-03-26 13:37:52,860 INFO] Step 700/ 5000; acc:  30.38; ppl: 74.08; xent: 4.31; lr: 0.50000; 8161/34994 tok/s;     18 sec
+[2020-03-26 13:37:53,829 INFO] Step 750/ 5000; acc:  32.38; ppl: 64.98; xent: 4.17; lr: 0.50000; 8426/33706 tok/s;     19 sec
+[2020-03-26 13:37:53,829 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:37:53,907 INFO] number of examples: 7998
+[2020-03-26 13:37:55,079 INFO] Step 800/ 5000; acc:  29.46; ppl: 77.73; xent: 4.35; lr: 0.50000; 6570/29961 tok/s;     20 sec
+[2020-03-26 13:37:55,079 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:37:55,079 INFO] number of examples: 1000
+[2020-03-26 13:37:55,329 INFO] Validation perplexity: 96.1168
+[2020-03-26 13:37:55,329 INFO] Validation accuracy: 29.8855
+[2020-03-26 13:37:56,297 INFO] Step 850/ 5000; acc:  33.08; ppl: 55.72; xent: 4.02; lr: 0.50000; 6198/27646 tok/s;     22 sec
+[2020-03-26 13:37:56,781 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:37:56,844 INFO] number of examples: 7998
+[2020-03-26 13:37:57,500 INFO] Step 900/ 5000; acc:  31.73; ppl: 63.17; xent: 4.15; lr: 0.50000; 7253/29281 tok/s;     23 sec
+[2020-03-26 13:37:58,484 INFO] Step 950/ 5000; acc:  33.68; ppl: 50.57; xent: 3.92; lr: 0.50000; 8161/34994 tok/s;     24 sec
+[2020-03-26 13:37:59,437 INFO] Step 1000/ 5000; acc:  35.52; ppl: 44.88; xent: 3.80; lr: 0.50000; 8564/34258 tok/s;     25 sec
+[2020-03-26 13:37:59,437 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:37:59,437 INFO] number of examples: 1000
+[2020-03-26 13:37:59,703 INFO] Validation perplexity: 94.1678
+[2020-03-26 13:37:59,703 INFO] Validation accuracy: 30.2854
+[2020-03-26 13:37:59,703 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:37:59,718 INFO] number of examples: 7998
+[2020-03-26 13:38:00,905 INFO] Step 1050/ 5000; acc:  32.32; ppl: 54.00; xent: 3.99; lr: 0.50000; 5592/25499 tok/s;     26 sec
+[2020-03-26 13:38:01,858 INFO] Step 1100/ 5000; acc:  36.01; ppl: 38.90; xent: 3.66; lr: 0.50000; 7925/35351 tok/s;     27 sec
+[2020-03-26 13:38:02,343 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:02,421 INFO] number of examples: 7998
+[2020-03-26 13:38:03,092 INFO] Step 1150/ 5000; acc:  34.97; ppl: 43.91; xent: 3.78; lr: 0.50000; 7069/28540 tok/s;     28 sec
+[2020-03-26 13:38:04,108 INFO] Step 1200/ 5000; acc:  37.18; ppl: 35.27; xent: 3.56; lr: 0.50000; 7910/33917 tok/s;     29 sec
+[2020-03-26 13:38:04,108 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:38:04,108 INFO] number of examples: 1000
+[2020-03-26 13:38:04,358 INFO] Validation perplexity: 92.6464
+[2020-03-26 13:38:04,358 INFO] Validation accuracy: 28.2312
+[2020-03-26 13:38:05,373 INFO] Step 1250/ 5000; acc:  38.48; ppl: 31.83; xent: 3.46; lr: 0.50000; 6450/25799 tok/s;     31 sec
+[2020-03-26 13:38:05,373 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:05,436 INFO] number of examples: 7998
+[2020-03-26 13:38:06,638 INFO] Step 1300/ 5000; acc:  35.65; ppl: 38.37; xent: 3.65; lr: 0.50000; 6489/29591 tok/s;     32 sec
+[2020-03-26 13:38:07,623 INFO] Step 1350/ 5000; acc:  39.30; ppl: 27.96; xent: 3.33; lr: 0.50000; 7674/34228 tok/s;     33 sec
+[2020-03-26 13:38:08,122 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:08,138 INFO] number of examples: 7998
+[2020-03-26 13:38:08,872 INFO] Step 1400/ 5000; acc:  38.28; ppl: 31.10; xent: 3.44; lr: 0.50000; 6981/28183 tok/s;     34 sec
+[2020-03-26 13:38:08,872 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:38:08,872 INFO] number of examples: 1000
+[2020-03-26 13:38:09,153 INFO] Validation perplexity: 93.0718
+[2020-03-26 13:38:09,153 INFO] Validation accuracy: 31.5943
+[2020-03-26 13:38:10,145 INFO] Step 1450/ 5000; acc:  40.21; ppl: 25.14; xent: 3.22; lr: 0.50000; 6310/27057 tok/s;     35 sec
+[2020-03-26 13:38:11,129 INFO] Step 1500/ 5000; acc:  41.95; ppl: 22.99; xent: 3.13; lr: 0.50000; 8292/33171 tok/s;     36 sec
+[2020-03-26 13:38:11,129 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:11,145 INFO] number of examples: 7998
+[2020-03-26 13:38:12,316 INFO] Step 1550/ 5000; acc:  38.22; ppl: 27.88; xent: 3.33; lr: 0.50000; 6916/31538 tok/s;     38 sec
+[2020-03-26 13:38:13,285 INFO] Step 1600/ 5000; acc:  42.63; ppl: 20.30; xent: 3.01; lr: 0.50000; 7797/34780 tok/s;     39 sec
+[2020-03-26 13:38:13,301 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:38:13,301 INFO] number of examples: 1000
+[2020-03-26 13:38:13,566 INFO] Validation perplexity: 109.72
+[2020-03-26 13:38:13,566 INFO] Validation accuracy: 31.8306
+[2020-03-26 13:38:14,050 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:14,113 INFO] number of examples: 7998
+[2020-03-26 13:38:14,785 INFO] Step 1650/ 5000; acc:  41.61; ppl: 22.54; xent: 3.12; lr: 0.50000; 5817/23486 tok/s;     40 sec
+[2020-03-26 13:38:15,800 INFO] Step 1700/ 5000; acc:  43.32; ppl: 18.35; xent: 2.91; lr: 0.50000; 7910/33917 tok/s;     41 sec
+[2020-03-26 13:38:16,769 INFO] Step 1750/ 5000; acc:  44.97; ppl: 17.02; xent: 2.83; lr: 0.50000; 8426/33706 tok/s;     42 sec
+[2020-03-26 13:38:16,769 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:16,847 INFO] number of examples: 7998
+[2020-03-26 13:38:18,018 INFO] Step 1800/ 5000; acc:  41.90; ppl: 20.52; xent: 3.02; lr: 0.50000; 6570/29961 tok/s;     43 sec
+[2020-03-26 13:38:18,018 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:38:18,034 INFO] number of examples: 1000
+[2020-03-26 13:38:18,299 INFO] Validation perplexity: 104.53
+[2020-03-26 13:38:18,299 INFO] Validation accuracy: 31.4761
+[2020-03-26 13:38:19,284 INFO] Step 1850/ 5000; acc:  46.53; ppl: 15.00; xent: 2.71; lr: 0.50000; 5968/26622 tok/s;     45 sec
+[2020-03-26 13:38:19,768 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:19,799 INFO] number of examples: 7998
+[2020-03-26 13:38:20,486 INFO] Step 1900/ 5000; acc:  45.19; ppl: 16.57; xent: 2.81; lr: 0.50000; 7253/29281 tok/s;     46 sec
+[2020-03-26 13:38:21,471 INFO] Step 1950/ 5000; acc:  46.87; ppl: 13.62; xent: 2.61; lr: 0.50000; 8161/34994 tok/s;     47 sec
+[2020-03-26 13:38:22,439 INFO] Step 2000/ 5000; acc:  48.82; ppl: 12.84; xent: 2.55; lr: 0.50000; 8426/33706 tok/s;     48 sec
+[2020-03-26 13:38:22,439 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:38:22,455 INFO] number of examples: 1000
+[2020-03-26 13:38:22,720 INFO] Validation perplexity: 114.664
+[2020-03-26 13:38:22,720 INFO] Validation accuracy: 31.4761
+[2020-03-26 13:38:22,720 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:22,783 INFO] number of examples: 7998
+[2020-03-26 13:38:23,954 INFO] Step 2050/ 5000; acc:  45.44; ppl: 15.31; xent: 2.73; lr: 0.50000; 5419/24710 tok/s;     49 sec
+[2020-03-26 13:38:24,923 INFO] Step 2100/ 5000; acc:  49.70; ppl: 11.50; xent: 2.44; lr: 0.50000; 7797/34780 tok/s;     50 sec
+[2020-03-26 13:38:25,407 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:25,485 INFO] number of examples: 7998
+[2020-03-26 13:38:26,141 INFO] Step 2150/ 5000; acc:  48.66; ppl: 12.53; xent: 2.53; lr: 0.50000; 7160/28906 tok/s;     51 sec
+[2020-03-26 13:38:27,125 INFO] Step 2200/ 5000; acc:  50.59; ppl: 10.30; xent: 2.33; lr: 0.50000; 8161/34994 tok/s;     52 sec
+[2020-03-26 13:38:27,125 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:38:27,141 INFO] number of examples: 1000
+[2020-03-26 13:38:27,391 INFO] Validation perplexity: 129.103
+[2020-03-26 13:38:27,391 INFO] Validation accuracy: 31.1852
+[2020-03-26 13:38:28,391 INFO] Step 2250/ 5000; acc:  52.66; ppl:  9.73; xent: 2.28; lr: 0.50000; 6450/25799 tok/s;     54 sec
+[2020-03-26 13:38:28,391 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:28,406 INFO] number of examples: 7998
+[2020-03-26 13:38:29,641 INFO] Step 2300/ 5000; acc:  48.93; ppl: 11.68; xent: 2.46; lr: 0.50000; 6570/29961 tok/s;     55 sec
+[2020-03-26 13:38:30,593 INFO] Step 2350/ 5000; acc:  53.45; ppl:  8.84; xent: 2.18; lr: 0.50000; 7925/35351 tok/s;     56 sec
+[2020-03-26 13:38:31,078 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:31,093 INFO] number of examples: 7998
+[2020-03-26 13:38:31,765 INFO] Step 2400/ 5000; acc:  52.16; ppl:  9.74; xent: 2.28; lr: 0.50000; 7446/30062 tok/s;     57 sec
+[2020-03-26 13:38:31,765 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:38:31,765 INFO] number of examples: 1000
+[2020-03-26 13:38:32,015 INFO] Validation perplexity: 146.143
+[2020-03-26 13:38:32,015 INFO] Validation accuracy: 30.4945
+[2020-03-26 13:38:33,015 INFO] Step 2450/ 5000; acc:  54.37; ppl:  8.00; xent: 2.08; lr: 0.50000; 6427/27557 tok/s;     58 sec
+[2020-03-26 13:38:33,983 INFO] Step 2500/ 5000; acc:  56.17; ppl:  7.60; xent: 2.03; lr: 0.50000; 8426/33706 tok/s;     59 sec
+[2020-03-26 13:38:33,983 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:34,061 INFO] number of examples: 7998
+[2020-03-26 13:38:35,233 INFO] Step 2550/ 5000; acc:  52.50; ppl:  9.14; xent: 2.21; lr: 0.50000; 6570/29961 tok/s;     61 sec
+[2020-03-26 13:38:36,201 INFO] Step 2600/ 5000; acc:  57.27; ppl:  7.04; xent: 1.95; lr: 0.50000; 7797/34780 tok/s;     62 sec
+[2020-03-26 13:38:36,201 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:38:36,201 INFO] number of examples: 1000
+[2020-03-26 13:38:36,451 INFO] Validation perplexity: 162.691
+[2020-03-26 13:38:36,451 INFO] Validation accuracy: 32.4305
+[2020-03-26 13:38:36,936 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:37,014 INFO] number of examples: 7998
+[2020-03-26 13:38:37,670 INFO] Step 2650/ 5000; acc:  55.89; ppl:  7.66; xent: 2.04; lr: 0.50000; 5941/23986 tok/s;     63 sec
+[2020-03-26 13:38:38,670 INFO] Step 2700/ 5000; acc:  58.22; ppl:  6.34; xent: 1.85; lr: 0.50000; 8034/34447 tok/s;     64 sec
+[2020-03-26 13:38:39,646 INFO] Step 2750/ 5000; acc:  59.41; ppl:  6.25; xent: 1.83; lr: 0.50000; 8361/33446 tok/s;     65 sec
+[2020-03-26 13:38:39,646 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:39,677 INFO] number of examples: 7998
+[2020-03-26 13:38:40,849 INFO] Step 2800/ 5000; acc:  56.38; ppl:  7.36; xent: 2.00; lr: 0.50000; 6826/31129 tok/s;     66 sec
+[2020-03-26 13:38:40,849 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:38:40,849 INFO] number of examples: 1000
+[2020-03-26 13:38:41,114 INFO] Validation perplexity: 179.101
+[2020-03-26 13:38:41,114 INFO] Validation accuracy: 31.7124
+[2020-03-26 13:38:42,083 INFO] Step 2850/ 5000; acc:  60.63; ppl:  5.75; xent: 1.75; lr: 0.50000; 6119/27296 tok/s;     67 sec
+[2020-03-26 13:38:42,567 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:42,629 INFO] number of examples: 7998
+[2020-03-26 13:38:43,301 INFO] Step 2900/ 5000; acc:  59.90; ppl:  6.11; xent: 1.81; lr: 0.50000; 7160/28906 tok/s;     69 sec
+[2020-03-26 13:38:44,332 INFO] Step 2950/ 5000; acc:  61.57; ppl:  5.19; xent: 1.65; lr: 0.50000; 7790/33403 tok/s;     70 sec
+[2020-03-26 13:38:45,316 INFO] Step 3000/ 5000; acc:  63.28; ppl:  5.11; xent: 1.63; lr: 0.50000; 8292/33171 tok/s;     71 sec
+[2020-03-26 13:38:45,316 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:38:45,316 INFO] number of examples: 1000
+[2020-03-26 13:38:45,582 INFO] Validation perplexity: 199.017
+[2020-03-26 13:38:45,582 INFO] Validation accuracy: 30.8671
+[2020-03-26 13:38:45,582 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:45,660 INFO] number of examples: 7998
+[2020-03-26 13:38:46,863 INFO] Step 3050/ 5000; acc:  59.51; ppl:  5.96; xent: 1.79; lr: 0.50000; 5309/24211 tok/s;     72 sec
+[2020-03-26 13:38:47,847 INFO] Step 3100/ 5000; acc:  63.90; ppl:  4.76; xent: 1.56; lr: 0.50000; 7674/34228 tok/s;     73 sec
+[2020-03-26 13:38:48,331 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:48,362 INFO] number of examples: 7998
+[2020-03-26 13:38:49,081 INFO] Step 3150/ 5000; acc:  62.53; ppl:  5.18; xent: 1.64; lr: 0.50000; 7069/28540 tok/s;     74 sec
+[2020-03-26 13:38:50,081 INFO] Step 3200/ 5000; acc:  65.15; ppl:  4.33; xent: 1.47; lr: 0.50000; 8034/34447 tok/s;     75 sec
+[2020-03-26 13:38:50,081 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:38:50,096 INFO] number of examples: 1000
+[2020-03-26 13:38:50,346 INFO] Validation perplexity: 218.563
+[2020-03-26 13:38:50,346 INFO] Validation accuracy: 31.767
+[2020-03-26 13:38:51,409 INFO] Step 3250/ 5000; acc:  66.30; ppl:  4.33; xent: 1.47; lr: 0.50000; 6146/24585 tok/s;     77 sec
+[2020-03-26 13:38:51,424 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:51,455 INFO] number of examples: 7998
+[2020-03-26 13:38:52,674 INFO] Step 3300/ 5000; acc:  62.56; ppl:  5.03; xent: 1.62; lr: 0.50000; 6489/29591 tok/s;     78 sec
+[2020-03-26 13:38:53,658 INFO] Step 3350/ 5000; acc:  66.70; ppl:  4.09; xent: 1.41; lr: 0.50000; 7674/34228 tok/s;     79 sec
+[2020-03-26 13:38:54,158 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:54,236 INFO] number of examples: 7998
+[2020-03-26 13:38:54,923 INFO] Step 3400/ 5000; acc:  65.39; ppl:  4.35; xent: 1.47; lr: 0.50000; 6895/27835 tok/s;     80 sec
+[2020-03-26 13:38:54,923 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:38:54,923 INFO] number of examples: 1000
+[2020-03-26 13:38:55,189 INFO] Validation perplexity: 240.943
+[2020-03-26 13:38:55,189 INFO] Validation accuracy: 33.0485
+[2020-03-26 13:38:56,204 INFO] Step 3450/ 5000; acc:  68.28; ppl:  3.68; xent: 1.30; lr: 0.50000; 6270/26885 tok/s;     82 sec
+[2020-03-26 13:38:57,188 INFO] Step 3500/ 5000; acc:  69.13; ppl:  3.77; xent: 1.33; lr: 0.50000; 8292/33171 tok/s;     83 sec
+[2020-03-26 13:38:57,188 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:38:57,282 INFO] number of examples: 7998
+[2020-03-26 13:38:58,485 INFO] Step 3550/ 5000; acc:  65.43; ppl:  4.34; xent: 1.47; lr: 0.50000; 6333/28878 tok/s;     84 sec
+[2020-03-26 13:38:59,485 INFO] Step 3600/ 5000; acc:  69.63; ppl:  3.57; xent: 1.27; lr: 0.50000; 7554/33694 tok/s;     85 sec
+[2020-03-26 13:38:59,485 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:38:59,485 INFO] number of examples: 1000
+[2020-03-26 13:38:59,735 INFO] Validation perplexity: 285.258
+[2020-03-26 13:38:59,735 INFO] Validation accuracy: 32.2123
+[2020-03-26 13:39:00,235 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:39:00,266 INFO] number of examples: 7998
+[2020-03-26 13:39:00,922 INFO] Step 3650/ 5000; acc:  68.08; ppl:  3.84; xent: 1.35; lr: 0.50000; 6070/24507 tok/s;     86 sec
+[2020-03-26 13:39:01,906 INFO] Step 3700/ 5000; acc:  70.75; ppl:  3.25; xent: 1.18; lr: 0.50000; 8161/34994 tok/s;     87 sec
+[2020-03-26 13:39:02,890 INFO] Step 3750/ 5000; acc:  71.55; ppl:  3.26; xent: 1.18; lr: 0.50000; 8292/33171 tok/s;     88 sec
+[2020-03-26 13:39:02,890 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:39:02,953 INFO] number of examples: 7998
+[2020-03-26 13:39:04,124 INFO] Step 3800/ 5000; acc:  68.07; ppl:  3.76; xent: 1.32; lr: 0.50000; 6653/30340 tok/s;     89 sec
+[2020-03-26 13:39:04,124 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:39:04,124 INFO] number of examples: 1000
+[2020-03-26 13:39:04,374 INFO] Validation perplexity: 282.288
+[2020-03-26 13:39:04,390 INFO] Validation accuracy: 33.1303
+[2020-03-26 13:39:05,358 INFO] Step 3850/ 5000; acc:  71.99; ppl:  3.14; xent: 1.15; lr: 0.50000; 6119/27296 tok/s;     91 sec
+[2020-03-26 13:39:05,827 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:39:05,905 INFO] number of examples: 7998
+[2020-03-26 13:39:06,561 INFO] Step 3900/ 5000; acc:  70.88; ppl:  3.35; xent: 1.21; lr: 0.50000; 7253/29281 tok/s;     92 sec
+[2020-03-26 13:39:07,561 INFO] Step 3950/ 5000; acc:  73.16; ppl:  2.92; xent: 1.07; lr: 0.50000; 8034/34447 tok/s;     93 sec
+[2020-03-26 13:39:08,561 INFO] Step 4000/ 5000; acc:  73.57; ppl:  2.95; xent: 1.08; lr: 0.50000; 8163/32652 tok/s;     94 sec
+[2020-03-26 13:39:08,561 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:39:08,561 INFO] number of examples: 1000
+[2020-03-26 13:39:08,811 INFO] Validation perplexity: 327.318
+[2020-03-26 13:39:08,811 INFO] Validation accuracy: 31.7942
+[2020-03-26 13:39:08,811 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:39:08,842 INFO] number of examples: 7998
+[2020-03-26 13:39:10,084 INFO] Step 4050/ 5000; acc:  70.88; ppl:  3.27; xent: 1.18; lr: 0.50000; 5392/24588 tok/s;     95 sec
+[2020-03-26 13:39:11,052 INFO] Step 4100/ 5000; acc:  73.98; ppl:  2.84; xent: 1.04; lr: 0.50000; 7797/34780 tok/s;     96 sec
+[2020-03-26 13:39:11,536 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:39:11,568 INFO] number of examples: 7998
+[2020-03-26 13:39:12,224 INFO] Step 4150/ 5000; acc:  73.15; ppl:  2.96; xent: 1.08; lr: 0.50000; 7446/30062 tok/s;     98 sec
+[2020-03-26 13:39:13,223 INFO] Step 4200/ 5000; acc:  75.06; ppl:  2.63; xent: 0.97; lr: 0.50000; 8034/34447 tok/s;     99 sec
+[2020-03-26 13:39:13,223 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:39:13,223 INFO] number of examples: 1000
+[2020-03-26 13:39:13,473 INFO] Validation perplexity: 352.43
+[2020-03-26 13:39:13,473 INFO] Validation accuracy: 33.194
+[2020-03-26 13:39:14,442 INFO] Step 4250/ 5000; acc:  75.60; ppl:  2.69; xent: 0.99; lr: 0.50000; 6698/26792 tok/s;    100 sec
+[2020-03-26 13:39:14,442 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:39:14,520 INFO] number of examples: 7998
+[2020-03-26 13:39:15,723 INFO] Step 4300/ 5000; acc:  73.44; ppl:  2.90; xent: 1.07; lr: 0.50000; 6410/29230 tok/s;    101 sec
+[2020-03-26 13:39:16,691 INFO] Step 4350/ 5000; acc:  76.19; ppl:  2.59; xent: 0.95; lr: 0.50000; 7797/34780 tok/s;    102 sec
+[2020-03-26 13:39:17,191 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:39:17,269 INFO] number of examples: 7998
+[2020-03-26 13:39:17,941 INFO] Step 4400/ 5000; acc:  75.23; ppl:  2.68; xent: 0.99; lr: 0.50000; 6981/28183 tok/s;    103 sec
+[2020-03-26 13:39:17,941 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:39:17,941 INFO] number of examples: 1000
+[2020-03-26 13:39:18,191 INFO] Validation perplexity: 395.082
+[2020-03-26 13:39:18,191 INFO] Validation accuracy: 32.3123
+[2020-03-26 13:39:19,175 INFO] Step 4450/ 5000; acc:  77.48; ppl:  2.40; xent: 0.87; lr: 0.50000; 6508/27906 tok/s;    105 sec
+[2020-03-26 13:39:20,144 INFO] Step 4500/ 5000; acc:  77.63; ppl:  2.45; xent: 0.90; lr: 0.50000; 8426/33706 tok/s;    105 sec
+[2020-03-26 13:39:20,144 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:39:20,159 INFO] number of examples: 7998
+[2020-03-26 13:39:21,331 INFO] Step 4550/ 5000; acc:  75.39; ppl:  2.64; xent: 0.97; lr: 0.50000; 6916/31538 tok/s;    107 sec
+[2020-03-26 13:39:22,299 INFO] Step 4600/ 5000; acc:  77.82; ppl:  2.39; xent: 0.87; lr: 0.50000; 7797/34780 tok/s;    108 sec
+[2020-03-26 13:39:22,299 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:39:22,299 INFO] number of examples: 1000
+[2020-03-26 13:39:22,549 INFO] Validation perplexity: 466.948
+[2020-03-26 13:39:22,549 INFO] Validation accuracy: 30.4308
+[2020-03-26 13:39:23,049 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:39:23,112 INFO] number of examples: 7998
+[2020-03-26 13:39:23,768 INFO] Step 4650/ 5000; acc:  77.40; ppl:  2.43; xent: 0.89; lr: 0.50000; 5941/23986 tok/s;    109 sec
+[2020-03-26 13:39:24,768 INFO] Step 4700/ 5000; acc:  79.27; ppl:  2.20; xent: 0.79; lr: 0.50000; 8034/34447 tok/s;    110 sec
+[2020-03-26 13:39:25,767 INFO] Step 4750/ 5000; acc:  79.44; ppl:  2.25; xent: 0.81; lr: 0.50000; 8163/32652 tok/s;    111 sec
+[2020-03-26 13:39:25,767 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:39:25,830 INFO] number of examples: 7998
+[2020-03-26 13:39:27,033 INFO] Step 4800/ 5000; acc:  77.19; ppl:  2.42; xent: 0.89; lr: 0.50000; 6489/29591 tok/s;    112 sec
+[2020-03-26 13:39:27,033 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:39:27,033 INFO] number of examples: 1000
+[2020-03-26 13:39:27,314 INFO] Validation perplexity: 487.34
+[2020-03-26 13:39:27,314 INFO] Validation accuracy: 31.9215
+[2020-03-26 13:39:28,314 INFO] Step 4850/ 5000; acc:  79.40; ppl:  2.22; xent: 0.80; lr: 0.50000; 5896/26298 tok/s;    114 sec
+[2020-03-26 13:39:28,829 INFO] Loading dataset from mn.train.0.pt
+[2020-03-26 13:39:28,845 INFO] number of examples: 7998
+[2020-03-26 13:39:29,516 INFO] Step 4900/ 5000; acc:  79.04; ppl:  2.25; xent: 0.81; lr: 0.50000; 7253/29281 tok/s;    115 sec
+[2020-03-26 13:39:30,501 INFO] Step 4950/ 5000; acc:  80.97; ppl:  2.07; xent: 0.73; lr: 0.50000; 8161/34994 tok/s;    116 sec
+[2020-03-26 13:39:31,500 INFO] Step 5000/ 5000; acc:  80.79; ppl:  2.11; xent: 0.75; lr: 0.50000; 8163/32652 tok/s;    117 sec
+[2020-03-26 13:39:31,500 INFO] Loading dataset from mn.valid.0.pt
+[2020-03-26 13:39:31,547 INFO] number of examples: 1000
+[2020-03-26 13:39:31,813 INFO] Validation perplexity: 541.638
+[2020-03-26 13:39:31,813 INFO] Validation accuracy: 31.1671
+[2020-03-26 13:39:31,844 INFO] Saving checkpoint Trained_Models/srumn_step_5000.pt
