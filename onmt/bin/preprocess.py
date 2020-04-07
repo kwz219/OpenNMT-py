@@ -58,11 +58,18 @@ def process_one_shard(corpus_params, params):
     _readers, _data, _dir = inputters.Dataset.config(
         [('src', src_data), ('tgt', tgt_data), ('align', align_data)])
 
-    dataset = inputters.Dataset(
-        fields, readers=_readers, data=_data, dirs=_dir,
-        sort_key=inputters.str2sortkey[opt.data_type],
-        filter_pred=filter_pred
-    )
+    if opt.code_summary is None:
+        dataset = inputters.Dataset(
+            fields, readers=_readers, data=_data, dirs=_dir,
+            sort_key=inputters.str2sortkey[opt.data_type],
+            filter_pred=filter_pred
+        )
+    else:
+        dataset = inputters.CS_Dataset(
+            fields, readers=_readers, data=_data, dirs=_dir,
+            sort_key=inputters.str2sortkey[opt.data_type],
+            filter_pred=filter_pred
+        )
     if corpus_type == "train" and existing_fields is None:
         for ex in dataset.examples:
             for name, field in fields.items():
@@ -209,7 +216,7 @@ def build_save_dataset(corpus_type, fields, src_reader, tgt_reader,
                 fields, counters, opt.data_type,
                 opt.share_vocab, opt.vocab_size_multiple,
                 opt.src_vocab_size, opt.src_words_min_frequency,
-                opt.tgt_vocab_size, opt.tgt_words_min_frequency)
+                opt.tgt_vocab_size, opt.tgt_words_min_frequency,opt.code_summary)
         else:
             fields = existing_fields
         torch.save(fields, vocab_path)
@@ -255,14 +262,24 @@ def preprocess(opt):
     logger.info(" * number of target features: %d." % tgt_nfeats)
 
     logger.info("Building `Fields` object...")
-    fields = inputters.get_fields(
-        opt.data_type,
-        src_nfeats,
-        tgt_nfeats,
-        dynamic_dict=opt.dynamic_dict,
-        with_align=opt.train_align[0] is not None,
-        src_truncate=opt.src_seq_length_trunc,
-        tgt_truncate=opt.tgt_seq_length_trunc)
+    if opt.code_summary is None:
+        fields = inputters.get_fields(
+            opt.data_type,
+            src_nfeats,
+            tgt_nfeats,
+            dynamic_dict=opt.dynamic_dict,
+            with_align=opt.train_align[0] is not None,
+            src_truncate=opt.src_seq_length_trunc,
+            tgt_truncate=opt.tgt_seq_length_trunc)
+    else:
+        fields=inputters.get_cs_fields(
+            opt,
+            src_nfeats,
+            tgt_nfeats,
+            dynamic_dict=opt.dynamic_dict,
+            with_align=opt.train_align[0] is not None,
+            src_truncate=opt.src_seq_length_trunc,
+            tgt_truncate=opt.tgt_seq_length_trunc)
 
     src_reader = inputters.str2reader[opt.data_type].from_opt(opt)
     tgt_reader = inputters.str2reader["text"].from_opt(opt)

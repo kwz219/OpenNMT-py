@@ -21,6 +21,7 @@ def model_opts(parser):
 
     # Embedding Options
     group = parser.add_argument_group('Model-Embeddings')
+    group.add('--code_summary', '-code_summary', default='None')
     group.add('--src_word_vec_size', '-src_word_vec_size',
               type=int, default=500,
               help='Word embedding size for src.')
@@ -206,6 +207,8 @@ def preprocess_opts(parser):
     """ Pre-procesing options """
     # Data options
     group = parser.add_argument_group('Data')
+    "added by zwk"
+    group.add('--code_summary','-code_summary',default='None')
     group.add('--data_type', '-data_type', default="text",
               help="Type of the source input. "
                    "Options are [text|img|audio|vec].")
@@ -584,6 +587,8 @@ def train_opts(parser):
 def translate_opts(parser):
     """ Translation / inference options """
     group = parser.add_argument_group('Model')
+    "added by zwk"
+    group.add('--code_summary','-code_summary',default='None')
     group.add('--model', '-model', dest='models', metavar='MODEL',
               nargs='+', type=str, default=[], required=True,
               help="Path to model .pt file(s). "

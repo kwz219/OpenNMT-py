@@ -5,8 +5,8 @@ e.g., from a line of text to a sequence of embeddings.
 """
 from onmt.inputters.inputter import \
     load_old_vocab, get_fields, OrderedIterator, \
-    build_vocab, old_style_vocab, filter_example
-from onmt.inputters.dataset_base import Dataset
+    build_vocab, old_style_vocab, filter_example,get_cs_fields
+from onmt.inputters.dataset_base import Dataset,CS_Dataset
 from onmt.inputters.text_dataset import text_sort_key, TextDataReader
 from onmt.inputters.image_dataset import img_sort_key, ImageDataReader
 from onmt.inputters.audio_dataset import audio_sort_key, AudioDataReader
@@ -22,7 +22,7 @@ str2sortkey = {
     'vec': vec_sort_key}
 
 
-__all__ = ['Dataset', 'load_old_vocab', 'get_fields', 'DataReaderBase',
+__all__ = ['Dataset', 'load_old_vocab', 'get_fields','get_cs_fields', 'DataReaderBase',
            'filter_example', 'old_style_vocab',
            'build_vocab', 'OrderedIterator',
            'text_sort_key', 'img_sort_key', 'audio_sort_key', 'vec_sort_key',

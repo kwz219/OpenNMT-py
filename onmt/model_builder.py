@@ -75,6 +75,18 @@ def build_encoder(opt, embeddings):
         or opt.model_type == "vec" else opt.model_type
     return str2enc[enc_type].from_opt(opt, embeddings)
 
+"added by zwk"
+def build_encoders(opt, embeddings):
+    """
+    Various encoder dispatcher function.
+    Args:
+        opt: the option in current environment.
+        embeddings (Embeddings): vocab embeddings for this encoder.
+    """
+    enc_type = opt.encoder_type if opt.model_type == "text" \
+        or opt.model_type == "vec" else opt.model_type
+    return str2enc[enc_type].from_opt(opt, embeddings),str2enc[enc_type].from_opt(opt, embeddings)
+
 
 def build_decoder(opt, embeddings):
     """
@@ -146,7 +158,11 @@ def build_base_model(model_opt, fields, gpu, checkpoint=None, gpu_id=None):
         src_emb = None
 
     # Build encoder.
-    encoder = build_encoder(model_opt, src_emb)
+    "added by zwk"
+    if model_opt.code_summary is None:
+        encoder = build_encoder(model_opt, src_emb)
+    else:
+        mn_encoder,bd_encoder=build_encoders(model_opt,src_emb)
 
     # Build decoder.
     tgt_field = fields["tgt"]
@@ -169,7 +185,11 @@ def build_base_model(model_opt, fields, gpu, checkpoint=None, gpu_id=None):
         device = torch.device("cuda")
     elif not gpu:
         device = torch.device("cpu")
-    model = onmt.models.NMTModel(encoder, decoder)
+    "added by zwk"
+    if model_opt.code_summary is None:
+        model = onmt.models.NMTModel(encoder, decoder)
+    else:
+        model=onmt.models.CodeSummaryModel(mn_encoder,bd_encoder,decoder)
 
     # Build Generator.
     if not model_opt.copy_attn:
@@ -222,10 +242,10 @@ def build_base_model(model_opt, fields, gpu, checkpoint=None, gpu_id=None):
             for p in generator.parameters():
                 if p.dim() > 1:
                     xavier_uniform_(p)
-
-        if hasattr(model.encoder, 'embeddings'):
-            model.encoder.embeddings.load_pretrained_vectors(
-                model_opt.pre_word_vecs_enc)
+        if model_opt.code_summary is None:
+            if hasattr(model.encoder, 'embeddings'):
+                model.encoder.embeddings.load_pretrained_vectors(
+                    model_opt.pre_word_vecs_enc)
         if hasattr(model.decoder, 'embeddings'):
             model.decoder.embeddings.load_pretrained_vectors(
                 model_opt.pre_word_vecs_dec)

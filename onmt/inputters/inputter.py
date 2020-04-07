@@ -185,6 +185,88 @@ def get_fields(
     return fields
 
 
+def get_cs_fields(
+    src,
+    n_src_feats,
+    n_tgt_feats,
+    pad='<blank>',
+    bos='<s>',
+    eos='</s>',
+    dynamic_dict=False,
+    with_align=False,
+    src_truncate=None,
+    tgt_truncate=None
+):
+    """
+    Args:
+        src
+        n_src_feats (int): the number of source features (not counting tokens)
+            to create a :class:`torchtext.data.Field` for. (If
+            ``src_data_type=="text"``, these fields are stored together
+            as a ``TextMultiField``).
+        n_tgt_feats (int): See above.
+        pad (str): Special pad symbol. Used on src and tgt side.
+        bos (str): Special beginning of sequence symbol. Only relevant
+            for tgt.
+        eos (str): Special end of sequence symbol. Only relevant
+            for tgt.
+        dynamic_dict (bool): Whether or not to include source map and
+            alignment fields.
+        with_align bool): Whether or not to include word align.
+        src_truncate: Cut off src sequences beyond this (passed to
+            ``src_data_type``'s data reader - see there for more details).
+        tgt_truncate: Cut off tgt sequences beyond this (passed to
+            :class:`TextDataReader` - see there for more details).
+
+    Returns:
+        A dict mapping names to fields. These names need to match
+        the dataset example attributes.
+    """
+
+
+    fields = {}
+
+
+
+    src_field_kwargs = {"n_feats": n_src_feats,
+                        "include_lengths": True,
+                        "pad": pad, "bos": None, "eos": None,
+                        "truncate": src_truncate,
+                        "base_name": "src"}
+    fields["src"] = text_fields(**src_field_kwargs)
+    fields["name"] = text_fields(**src_field_kwargs)
+    fields["body"] = text_fields(**src_field_kwargs)
+
+    tgt_field_kwargs = {"n_feats": n_tgt_feats,
+                        "include_lengths": False,
+                        "pad": pad, "bos": bos, "eos": eos,
+                        "truncate": tgt_truncate,
+                        "base_name": "tgt"}
+    fields["tgt"] = text_fields(**tgt_field_kwargs)
+
+    indices = Field(use_vocab=False, dtype=torch.long, sequential=False)
+    fields["indices"] = indices
+
+    if dynamic_dict:
+        src_map = Field(
+            use_vocab=False, dtype=torch.float,
+            postprocessing=make_src, sequential=False)
+        fields["src_map"] = src_map
+
+        src_ex_vocab = RawField()
+        fields["src_ex_vocab"] = src_ex_vocab
+
+        align = Field(
+            use_vocab=False, dtype=torch.long,
+            postprocessing=make_tgt, sequential=False)
+        fields["alignment"] = align
+
+    if with_align:
+        word_align = AlignField()
+        fields["align"] = word_align
+
+    return fields
+
 def load_old_vocab(vocab, data_type="text", dynamic_dict=False):
     """Update a legacy vocab/field format.
 
@@ -363,7 +445,7 @@ def _build_fv_from_multifield(multifield, counters, build_fv_args,
 def _build_fields_vocab(fields, counters, data_type, share_vocab,
                         vocab_size_multiple,
                         src_vocab_size, src_words_min_frequency,
-                        tgt_vocab_size, tgt_words_min_frequency):
+                        tgt_vocab_size, tgt_words_min_frequency,code_summary=None):
     build_fv_args = defaultdict(dict)
     build_fv_args["src"] = dict(
         max_size=src_vocab_size, min_freq=src_words_min_frequency)
@@ -382,6 +464,9 @@ def _build_fields_vocab(fields, counters, data_type, share_vocab,
             counters,
             build_fv_args,
             size_multiple=vocab_size_multiple if not share_vocab else 1)
+        if code_summary is not None:
+            fields["name"]=fields["src"]
+            fields["body"]=fields["src"]
         if share_vocab:
             # `tgt_vocab_size` is ignored when sharing vocabularies
             logger.info(" * merging src and tgt vocab...")
@@ -648,6 +733,11 @@ class OrderedIterator(torchtext.data.Iterator):
                 if self.yield_raw_example:
                     yield minibatch[0]
                 else:
+                    btc=torchtext.data.Batch(
+                        minibatch,
+                        self.dataset,
+                        self.device)
+                    print(btc)
                     yield torchtext.data.Batch(
                         minibatch,
                         self.dataset,

@@ -130,7 +130,8 @@ class Translator(object):
             report_align=False,
             report_score=True,
             logger=None,
-            seed=-1):
+            seed=-1,
+            code_summary=None):
         self.model = model
         self.fields = fields
         tgt_field = dict(self.fields)["tgt"].base_field
@@ -190,6 +191,7 @@ class Translator(object):
         # for debugging
         self.beam_trace = self.dump_beam != ""
         self.beam_accum = None
+        self.code_summary=code_summary
         if self.beam_trace:
             self.beam_accum = {
                 "predicted_ids": [],
@@ -259,7 +261,8 @@ class Translator(object):
             report_align=report_align,
             report_score=report_score,
             logger=logger,
-            seed=opt.seed)
+            seed=opt.seed,
+            code_summary=opt.code_summary)
 
     def _log(self, msg):
         if self.logger:
@@ -315,11 +318,29 @@ class Translator(object):
         _readers, _data, _dir = inputters.Dataset.config(
             [('src', src_data), ('tgt', tgt_data)])
 
-        data = inputters.Dataset(
-            self.fields, readers=_readers, data=_data, dirs=_dir,
-            sort_key=inputters.str2sortkey[self.data_type],
-            filter_pred=self._filter_pred
-        )
+        "added by zwk"
+        if self.code_summary is None:
+            data = inputters.Dataset(
+                self.fields, readers=_readers, data=_data, dirs=_dir,
+                sort_key=inputters.str2sortkey[self.data_type],
+                filter_pred=self._filter_pred
+            )
+        else:
+            self.fields=inputters.get_cs_fields(
+            None,
+            0,
+            0,
+            None,
+            None,
+            src_truncate=300,
+            tgt_truncate=100)
+            data=inputters.CS_Dataset(
+                self.fields, readers=_readers, data=_data, dirs=_dir,
+                sort_key=inputters.str2sortkey[self.data_type],
+                filter_pred=self._filter_pred
+            )
+            print(self.fields)
+
 
         data_iter = inputters.OrderedIterator(
             dataset=data,
@@ -348,6 +369,7 @@ class Translator(object):
         start_time = time.time()
 
         for batch in data_iter:
+            print(batch)
             batch_data = self.translate_batch(
                 batch, data.src_vocabs, attn_debug
             )
@@ -547,11 +569,31 @@ class Translator(object):
                                                        decode_strategy)
 
     def _run_encoder(self, batch):
-        src, src_lengths = batch.src if isinstance(batch.src, tuple) \
-                           else (batch.src, None)
+        print(self.code_summary)
 
-        enc_states, memory_bank, src_lengths = self.model.encoder(
-            src, src_lengths)
+        if self.code_summary is None:
+            src, src_lengths = batch.src if isinstance(batch.src, tuple) \
+                               else (batch.src, None)
+            enc_states, memory_bank, src_lengths = self.model.encoder(
+                src, src_lengths)
+        else:
+            mn_src, mn_lengths = batch.name
+            bd_src, bd_lengths = batch.body
+            src = [mn_src, bd_src]
+            src_lengths = [mn_lengths, bd_lengths]
+            mn_enc_state, mn_memory_bank, mn_lengths = self.model.mn_encoder(src[0], src_lengths[0])
+            mn_enc_h, mn_enc_c = mn_enc_state
+            bd_enc_state, bd_memory_bank, bd_lengths = self.model.bd_encoder(src[1], src_lengths[1])
+            bd_enc_h, bd_enc_c = bd_enc_state
+            memory_bank = torch.cat((mn_memory_bank, bd_memory_bank), 0)
+            memory_lengths = mn_lengths + bd_lengths
+            enc_h = self.h_trans(torch.cat((mn_enc_h, bd_enc_h), 2))
+            enc_c = self.c_trans(torch.cat((mn_enc_c, bd_enc_c), 2))
+            enc_state = tuple([enc_h, enc_c])
+
+
+
+
         if src_lengths is None:
             assert not isinstance(memory_bank, tuple), \
                 'Ensemble decoding only supported for text data'

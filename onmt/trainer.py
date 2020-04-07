@@ -11,7 +11,6 @@
 
 import torch
 import traceback
-
 import onmt.utils
 from onmt.utils.logging import logger
 
@@ -46,6 +45,7 @@ def build_trainer(opt, device_id, model, fields, optim, model_saver=None):
     average_every = opt.average_every
     dropout = opt.dropout
     dropout_steps = opt.dropout_steps
+    code_summary=opt.code_summary
     if device_id >= 0:
         gpu_rank = opt.gpu_ranks[device_id]
     else:
@@ -70,7 +70,8 @@ def build_trainer(opt, device_id, model, fields, optim, model_saver=None):
                            model_dtype=opt.model_dtype,
                            earlystopper=earlystopper,
                            dropout=dropout,
-                           dropout_steps=dropout_steps)
+                           dropout_steps=dropout_steps,
+                           code_summary=code_summary)
     return trainer
 
 
@@ -107,7 +108,7 @@ class Trainer(object):
                  n_gpu=1, gpu_rank=1, gpu_verbose_level=0,
                  report_manager=None, with_align=False, model_saver=None,
                  average_decay=0, average_every=1, model_dtype='fp32',
-                 earlystopper=None, dropout=[0.3], dropout_steps=[0]):
+                 earlystopper=None, dropout=[0.3], dropout_steps=[0],code_summary=None):
         # Basic attributes.
         self.model = model
         self.train_loss = train_loss
@@ -132,6 +133,7 @@ class Trainer(object):
         self.earlystopper = earlystopper
         self.dropout = dropout
         self.dropout_steps = dropout_steps
+        self.code_summary=code_summary
 
         for i in range(len(self.accum_count_l)):
             assert self.accum_count_l[i] > 0
@@ -311,6 +313,13 @@ class Trainer(object):
             for batch in valid_iter:
                 src, src_lengths = batch.src if isinstance(batch.src, tuple) \
                                    else (batch.src, None)
+                "added by zwk"
+                if self.code_summary is not None:
+                    mn_src, mn_lengths = batch.name
+                    bd_src, bd_lengths = batch.body
+                    src = [mn_src, bd_src]
+                    src_lengths = [mn_lengths, bd_lengths]
+
                 tgt = batch.tgt
 
                 # F-prop through the model.
@@ -347,8 +356,16 @@ class Trainer(object):
 
             src, src_lengths = batch.src if isinstance(batch.src, tuple) \
                 else (batch.src, None)
+
+            "added by zwk"
+            if self.code_summary is not None:
+                mn_src,mn_lengths=batch.name
+                bd_src,bd_lengths=batch.body
+                src=[mn_src,bd_src]
+                src_lengths=[mn_lengths,bd_lengths]
+
             if src_lengths is not None:
-                report_stats.n_src_words += src_lengths.sum().item()
+                report_stats.n_src_words += src_lengths[0].sum().item()+src_lengths[1].sum().item()
 
             tgt_outer = batch.tgt
 
